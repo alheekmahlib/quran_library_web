@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://github.com/alheekmahlib/quran_library_web/sitemap.xml
+Sitemap: https://alheekmahlib.github.io/quran_library_web/sitemap.xml
 
 # Crawl-delay
 Crawl-delay: 1

@@ -4,7 +4,8 @@ class SEOService {
   static const String defaultTitle = 'مكتبة القرآن الكريم - Quran Library';
   static const String defaultDescription =
       'دليل شامل لتطوير تطبيقات القرآن الكريم باستخدام Flutter. تعلم كيفية إنشاء تطبيقات قرآنية مع ميزات الصوت والبحث والتفسير والمزيد.';
-  static const String baseUrl = 'https://quran-library.vercel.app';
+  static const String baseUrl =
+      'https://alheekmahlib.github.io/quran_library_web';
 
   /// Update page title and meta tags for SEO
   static void updatePageSEO({

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
 import '../config/app_router.dart';
+import '../services/seo_service.dart';
 
 class NavigationController extends GetxController {
   static NavigationController get instance => Get.find();
@@ -31,6 +32,9 @@ class NavigationController extends GetxController {
     if (buildContext != null) {
       final route = AppRouter.getRouteFromSection(sectionKey);
       buildContext.go(route);
+
+      // Update SEO for the new section
+      _updateSEOForSection(sectionKey, route);
     }
   }
 
@@ -40,6 +44,8 @@ class NavigationController extends GetxController {
     final section = AppRouter.getSectionFromRoute(route);
     if (currentSection.value != section) {
       currentSection.value = section;
+      // Update SEO when URL changes
+      _updateSEOForSection(section, route);
     }
     _isUpdatingFromUrl = false;
   }
@@ -47,4 +53,15 @@ class NavigationController extends GetxController {
   // Get current route path
   String get currentRoute =>
       AppRouter.getRouteFromSection(currentSection.value);
+
+  // Update SEO for the current section
+  void _updateSEOForSection(String sectionKey, String route) {
+    final seoData = SEOService.getSEODataForSection(sectionKey);
+    SEOService.updatePageSEO(
+      title: seoData['title'],
+      description: seoData['description'],
+      path: route,
+      keywords: seoData['keywords'],
+    );
+  }
 }

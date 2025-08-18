@@ -16,13 +16,21 @@ class ContentPage extends StatelessWidget {
 
     return Container(
       color: AppTheme.backgroundColor,
+      width: double.infinity,
+      height: double.infinity,
       child: SingleChildScrollView(
         padding: EdgeInsets.all(
           MediaQuery.of(context).size.width > 800 ? 32 : 16,
         ),
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 800),
-          child: Obx(() => _buildContent(navController.currentSection.value)),
+        child: Center(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: MediaQuery.of(context).size.width > 1200
+                  ? 1000
+                  : double.infinity,
+            ),
+            child: Obx(() => _buildContent(navController.currentSection.value)),
+          ),
         ),
       ),
     );

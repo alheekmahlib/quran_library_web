@@ -56,12 +56,19 @@ class NavigationController extends GetxController {
 
   // Update SEO for the current section
   void _updateSEOForSection(String sectionKey, String route) {
-    final seoData = SEOService.getSEODataForSection(sectionKey);
-    SEOService.updatePageSEO(
-      title: seoData['title'],
-      description: seoData['description'],
-      path: route,
-      keywords: seoData['keywords'],
-    );
+    // Use a future to ensure DOM is ready
+    Future.microtask(() {
+      try {
+        final seoData = SEOService.getSEODataForSection(sectionKey);
+        SEOService.updatePageSEO(
+          title: seoData['title'],
+          description: seoData['description'],
+          path: route,
+          keywords: seoData['keywords'],
+        );
+      } catch (e) {
+        print('SEO update failed: $e');
+      }
+    });
   }
 }

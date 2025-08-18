@@ -15,37 +15,42 @@ class SEOService {
     List<String>? keywords,
     String? image,
   }) {
-    // Update title
-    html.document.title = '$title | $defaultTitle';
+    try {
+      // Update title
+      html.document.title = '$title | $defaultTitle';
 
-    // Update meta description
-    _updateMetaTag('name', 'description', description);
+      // Update meta description
+      _updateMetaTag('name', 'description', description);
 
-    // Update keywords if provided
-    if (keywords != null && keywords.isNotEmpty) {
-      _updateMetaTag('name', 'keywords', keywords.join(', '));
+      // Update keywords if provided
+      if (keywords != null && keywords.isNotEmpty) {
+        _updateMetaTag('name', 'keywords', keywords.join(', '));
+      }
+
+      // Update Open Graph tags
+      _updateMetaTag('property', 'og:title', title);
+      _updateMetaTag('property', 'og:description', description);
+      _updateMetaTag('property', 'og:url', '$baseUrl$path');
+
+      if (image != null) {
+        _updateMetaTag('property', 'og:image', image);
+      }
+
+      // Update Twitter tags
+      _updateMetaTag('property', 'twitter:title', title);
+      _updateMetaTag('property', 'twitter:description', description);
+      _updateMetaTag('property', 'twitter:url', '$baseUrl$path');
+
+      if (image != null) {
+        _updateMetaTag('property', 'twitter:image', image);
+      }
+
+      // Update canonical URL
+      _updateCanonicalUrl('$baseUrl$path');
+    } catch (e) {
+      // Silently handle errors if DOM is not available or on non-web platforms
+      print('SEO update skipped: $e');
     }
-
-    // Update Open Graph tags
-    _updateMetaTag('property', 'og:title', title);
-    _updateMetaTag('property', 'og:description', description);
-    _updateMetaTag('property', 'og:url', '$baseUrl$path');
-
-    if (image != null) {
-      _updateMetaTag('property', 'og:image', image);
-    }
-
-    // Update Twitter tags
-    _updateMetaTag('property', 'twitter:title', title);
-    _updateMetaTag('property', 'twitter:description', description);
-    _updateMetaTag('property', 'twitter:url', '$baseUrl$path');
-
-    if (image != null) {
-      _updateMetaTag('property', 'twitter:image', image);
-    }
-
-    // Update canonical URL
-    _updateCanonicalUrl('$baseUrl$path');
   }
 
   /// Get SEO data for specific section

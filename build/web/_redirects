@@ -1,0 +1,12 @@
+# Netlify/Vercel redirects for Flutter web SPA
+
+# Redirect all paths to index.html for client-side routing
+/*    /index.html   200
+
+# Ensure sitemap.xml and robots.txt are accessible
+/sitemap.xml  /sitemap.xml  200
+/robots.txt   /robots.txt   200
+
+# Redirect common variations
+/home         /             301
+/about        /what-is-quran-library  301

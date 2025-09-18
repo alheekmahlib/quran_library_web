@@ -41,28 +41,16 @@ class HomePage extends StatelessWidget {
           width: 1,
           color: AppTheme.cardColor,
         ),
-        // Main content with LayoutBuilder to ensure proper layout
+        // Main content
         Expanded(
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              return SelectionArea(
-                child: ContentPage(),
-              );
-            },
-          ),
+          child: ContentPage(),
         ),
       ],
     );
   }
 
   Widget _buildMobileLayout() {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return SelectionArea(
-          child: ContentPage(),
-        );
-      },
-    );
+    return ContentPage();
   }
 
   Widget _buildMobileDrawer(BuildContext context) {

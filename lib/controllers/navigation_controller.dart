@@ -13,11 +13,8 @@ class NavigationController extends GetxController {
     super.onInit();
     // Update navigation controller based on current route
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final context = Get.context;
-      if (context != null) {
-        final currentRoute = GoRouterState.of(context).uri.toString();
-        updateSectionFromUrl(currentRoute);
-      }
+      final currentRoute = GoRouterState.of(Get.context!).uri.toString();
+      updateSectionFromUrl(currentRoute);
     });
   }
 
@@ -59,19 +56,12 @@ class NavigationController extends GetxController {
 
   // Update SEO for the current section
   void _updateSEOForSection(String sectionKey, String route) {
-    // Use a future to ensure DOM is ready
-    Future.microtask(() {
-      try {
-        final seoData = SEOService.getSEODataForSection(sectionKey);
-        SEOService.updatePageSEO(
-          title: seoData['title'],
-          description: seoData['description'],
-          path: route,
-          keywords: seoData['keywords'],
-        );
-      } catch (e) {
-        print('SEO update failed: $e');
-      }
-    });
+    final seoData = SEOService.getSEODataForSection(sectionKey);
+    SEOService.updatePageSEO(
+      title: seoData['title'],
+      description: seoData['description'],
+      path: route,
+      keywords: seoData['keywords'],
+    );
   }
 }

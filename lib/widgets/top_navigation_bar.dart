@@ -59,7 +59,7 @@ class TopNavigationBar extends StatelessWidget implements PreferredSizeWidget {
           ),
           const Spacer(),
           // Navigation items for desktop
-          // _buildNavItem('docs'.tr, () {}),
+          _buildNavItem('docs'.tr, () {}),
           const Gap(16),
           // Language dropdown
           const LanguageDropdown(),

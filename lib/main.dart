@@ -7,11 +7,27 @@ import 'constants/app_theme.dart';
 import 'controllers/language_controller.dart';
 import 'controllers/navigation_controller.dart';
 import 'controllers/search_controller.dart';
+import 'services/seo_service.dart';
 import 'translations/app_translations.dart';
 
 void main() {
+  // Initialize SEO with default values
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Set up initial SEO
+  _initializeSEO();
+
   runApp(const QuranLibraryWebsite());
+}
+
+void _initializeSEO() {
+  final defaultSEO = SEOService.getSEODataForSection('what_is_quran_library');
+  SEOService.updatePageSEO(
+    title: defaultSEO['title'],
+    description: defaultSEO['description'],
+    path: '/',
+    keywords: defaultSEO['keywords'],
+  );
 }
 
 class QuranLibraryWebsite extends StatelessWidget {

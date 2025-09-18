@@ -29,13 +29,6 @@ class TafsirSection extends BaseSectionPage {
         const Gap(16),
         buildParagraph('tafsir_note'.tr),
         const Gap(24),
-        buildSubtitle('tafsir_init'.tr),
-        const Gap(16),
-        const CodeBlock(
-          code: 'QuranLibrary.initTafsir();',
-          language: 'dart',
-        ),
-        const Gap(24),
         buildSubtitle('tafsir_usage_example'.tr),
         const Gap(16),
         const CodeBlock(

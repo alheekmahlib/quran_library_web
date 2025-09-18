@@ -59,7 +59,7 @@ class TopNavigationBar extends StatelessWidget implements PreferredSizeWidget {
           ),
           const Spacer(),
           // Navigation items for desktop
-          _buildNavItem('docs'.tr, () {}),
+          // _buildNavItem('docs'.tr, () {}),
           const Gap(16),
           // Language dropdown
           const LanguageDropdown(),
@@ -133,23 +133,23 @@ class TopNavigationBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  Widget _buildNavItem(String text, VoidCallback onTap) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(6),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        child: Text(
-          text,
-          style: GoogleFonts.cairo(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-            color: AppTheme.textSecondary,
-          ),
-        ),
-      ),
-    );
-  }
+  // Widget _buildNavItem(String text, VoidCallback onTap) {
+  //   return InkWell(
+  //     onTap: onTap,
+  //     borderRadius: BorderRadius.circular(6),
+  //     child: Padding(
+  //       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+  //       child: Text(
+  //         text,
+  //         style: GoogleFonts.cairo(
+  //           fontSize: 14,
+  //           fontWeight: FontWeight.w500,
+  //           color: AppTheme.textSecondary,
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 
   Widget _buildIconButton(IconData icon, String tooltip, VoidCallback onTap) {
     return Tooltip(

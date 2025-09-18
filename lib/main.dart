@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 

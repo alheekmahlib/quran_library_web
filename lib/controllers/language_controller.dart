@@ -1,12 +1,14 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
 
 class LanguageController extends GetxController {
   static LanguageController get instance => Get.find();
 
   // Observable for current language
-  var currentLanguage = 'ar'.obs;
-  var isDropdownOpen = false.obs;
+  RxString currentLanguage = 'ar'.obs;
+  RxBool isDropdownOpen = false.obs;
 
   // Available languages
   final List<LanguageModel> languages = [
@@ -67,9 +69,11 @@ class LanguageController extends GetxController {
   void changeLanguage(String languageCode) {
     currentLanguage.value = languageCode;
 
-    // Update GetX locale
-    Locale locale = Locale(languageCode);
-    Get.updateLocale(locale);
+    // تأجيل تحديث اللغة إلى ما بعد اكتمال عملية البناء
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      Locale locale = Locale(languageCode);
+      Get.updateLocale(locale);
+    });
   }
 
   void toggleDropdown() {
@@ -93,6 +97,21 @@ class LanguageController extends GetxController {
 
   bool get isArabic => currentLanguage.value == 'ar';
   bool get isEnglish => currentLanguage.value == 'en';
+
+  void updateLanguageFromUrl(String url) {
+    try {
+      final uri = Uri.parse(url);
+      final languageCode =
+          uri.pathSegments.isNotEmpty ? uri.pathSegments.first : 'ar';
+      if (languages.any((lang) => lang.code == languageCode)) {
+        changeLanguage(languageCode);
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error parsing URL for language: $e');
+      }
+    }
+  }
 }
 
 class LanguageModel {

@@ -12,8 +12,10 @@ class NavigationController extends GetxController {
     super.onInit();
     // Update navigation controller based on current route
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final currentRoute = GoRouterState.of(Get.context!).uri.toString();
-      updateSectionFromUrl(currentRoute);
+      if (Get.context != null) {
+        final currentRoute = GoRouterState.of(Get.context!).uri.toString();
+        updateSectionFromUrl(currentRoute);
+      }
     });
   }
 

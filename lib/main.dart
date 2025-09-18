@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
@@ -10,6 +11,7 @@ import 'controllers/search_controller.dart';
 import 'translations/app_translations.dart';
 
 void main() {
+  setUrlStrategy(PathUrlStrategy());
   runApp(const QuranLibraryWebsite());
 }
 

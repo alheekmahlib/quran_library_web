@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../controllers/language_controller.dart';
 import '../pages/home_page.dart';
 
 class AppRouter {
@@ -42,18 +43,23 @@ class AppRouter {
   static const String audioPositionControl = '/audio-position-control';
 
   static final GoRouter router = GoRouter(
-    initialLocation: home,
+    initialLocation: '/ar', // Set default language to 'ar'
     routes: [
       GoRoute(
         name: "home",
-        path: home,
-        pageBuilder: (context, state) => CustomTransitionPage(
-          key: state.pageKey,
-          child: const HomePage(),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return FadeTransition(opacity: animation, child: child);
-          },
-        ),
+        path: '/:languageCode',
+        pageBuilder: (context, state) {
+          final languageCode = state.pathParameters['languageCode'] ?? 'ar';
+          LanguageController.instance.updateLanguageFromUrl('/$languageCode');
+          return CustomTransitionPage(
+            key: state.pageKey,
+            child: const HomePage(),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              return FadeTransition(opacity: animation, child: child);
+            },
+          );
+        },
         routes: <RouteBase>[
           GoRoute(
             name: "introduction",
@@ -454,6 +460,13 @@ class AppRouter {
         ],
       ),
     ],
+    redirect: (context, state) {
+      final languageCode = state.pathParameters['languageCode'];
+      if (languageCode == null || languageCode.isEmpty) {
+        return '/ar'; // Redirect to default language if not specified
+      }
+      return null;
+    },
   );
 
   // Helper function to get route name from section key

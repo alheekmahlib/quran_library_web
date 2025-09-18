@@ -21,7 +21,7 @@ class InstallationSection extends BaseSectionPage {
         const CodeBlock(
           code: '''dependencies:
   ...
-  quran_library: ^2.0.0''',
+  quran_library: ^2.0.13+1''',
           language: 'yaml',
         ),
         const Gap(24),

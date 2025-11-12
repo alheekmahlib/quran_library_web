@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../constants/app_theme.dart';
+import '../controllers/content_controller.dart';
 
 class CodeBlock extends StatefulWidget {
   final String code;
@@ -100,16 +101,17 @@ class _CodeBlockState extends State<CodeBlock> {
           // Code content
           Directionality(
             textDirection: TextDirection.ltr,
-            child: SelectionArea(
-              child: HighlightView(
-                widget.code,
-                language: widget.language,
-                theme: vs2015Theme,
-                padding: const EdgeInsets.all(16),
-                textStyle: GoogleFonts.firaCode(
-                  fontSize: widget.fontSize,
-                  height: 1.5,
-                ),
+            child: HighlightView(
+              widget.code.replaceAll(
+                'LATEST_VERSION',
+                ContentController.instance.latestVersion ?? '^2.2.5',
+              ),
+              language: widget.language,
+              theme: vs2015Theme,
+              padding: const EdgeInsets.all(16),
+              textStyle: GoogleFonts.firaCode(
+                fontSize: widget.fontSize,
+                height: 1.5,
               ),
             ),
           ),

@@ -8,9 +8,15 @@ class AppConstants {
   static const String logoUrl =
       'https://raw.githubusercontent.com/alheekmahlib/thegarlanded/refs/heads/master/Photos/quran_library.svg';
   static const String libraryLogoUrl =
-      'https://raw.githubusercontent.com/alheekmahlib/thegarlanded/refs/heads/master/Photos/quran_library_logo.png';
+      'https://raw.githubusercontent.com/alheekmahlib/data/main/packages/quran_library/quran_library_logo.png';
   static const String bannerUrl =
       'https://github.com/alheekmahlib/thegarlanded/blob/master/Photos/quran_package_banner.png?raw=true';
+
+  // Remote JSON content URL (host on GitHub raw or any CDN). Leave empty to use assets/local cache only.
+  // Example: 'https://raw.githubusercontent.com/<owner>/<repo>/<branch>/content/content.json'
+  // Prefer raw.githubusercontent.com for CORS-friendly XHR on the web
+  static const String contentJsonUrl =
+      'https://raw.githubusercontent.com/alheekmahlib/data/main/packages/quran_library/content/content.json';
 
   // Navigation items
   static const List<String> mainNavItems = [

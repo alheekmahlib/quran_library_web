@@ -3,12 +3,12 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   // Colors inspired by Riverpod
-  static const Color primaryBlue = Color(0xFF1976D2);
-  static const Color darkBlue = Color(0xFF0D47A1);
-  static const Color lightBlue = Color(0xFF42A5F5);
-  static const Color backgroundColor = Color(0xFF0F1419);
-  static const Color surfaceColor = Color(0xFF1E2328);
-  static const Color cardColor = Color(0xFF2A2F36);
+  static const Color primaryBlue = Color(0xFF1ABABA);
+  static const Color darkBlue = Color(0xFF008080);
+  static const Color lightBlue = Color(0xFF1ABABA);
+  static const Color backgroundColor = Color.fromARGB(255, 0, 22, 22);
+  static const Color surfaceColor = Color.fromARGB(255, 5, 41, 41);
+  static const Color cardColor = Color.fromARGB(255, 43, 55, 55);
   static const Color cardDarkColor = Color.fromARGB(255, 30, 30, 30);
   static const Color textPrimary = Color(0xFFFFFFFF);
   static const Color textSecondary = Color(0xFFB0BEC5);
@@ -22,7 +22,7 @@ class AppTheme {
   static ThemeData get darkTheme {
     return ThemeData(
       brightness: Brightness.dark,
-      primarySwatch: MaterialColor(primaryBlue.value, {
+      primarySwatch: MaterialColor(primaryBlue.toARGB32(), {
         50: lightBlue.withValues(alpha: 0.1),
         100: lightBlue.withValues(alpha: 0.2),
         200: lightBlue.withValues(alpha: 0.3),
@@ -106,7 +106,7 @@ class AppTheme {
           fontWeight: FontWeight.w400,
         ),
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         color: cardColor,
         elevation: 2,
         shape: RoundedRectangleBorder(
@@ -123,6 +123,7 @@ class AppTheme {
           ),
         ),
       ),
+      highlightColor: darkBlue.withValues(alpha: 0.3),
     );
   }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 import '../constants/app_theme.dart';
 import '../controllers/navigation_controller.dart';
@@ -7,8 +8,29 @@ import '../pages/content_page.dart';
 import '../widgets/side_navigation_bar.dart';
 import '../widgets/top_navigation_bar.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // تحديث القسم الحالي بناءً على المسار
+    try {
+      final state = GoRouterState.of(context);
+      final sectionId = state.pathParameters['sectionId'];
+      if (sectionId != null && sectionId.isNotEmpty) {
+        final navController = Get.find<NavigationController>();
+        navController.updateSectionFromUrl(sectionId);
+      }
+    } catch (e) {
+      // القسم الافتراضي
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

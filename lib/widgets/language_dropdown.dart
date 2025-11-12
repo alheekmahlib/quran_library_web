@@ -54,23 +54,13 @@ class LanguageDropdown extends StatelessWidget {
   Widget _buildHeader(LanguageModel selectedItem) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            selectedItem.flag,
-            style: const TextStyle(fontSize: 16),
-          ),
-          const Gap(8),
-          Text(
-            selectedItem.name,
-            style: GoogleFonts.cairo(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              color: AppTheme.textSecondary,
-            ),
-          ),
-        ],
+      child: Text(
+        selectedItem.name,
+        style: GoogleFonts.cairo(
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+          color: AppTheme.textSecondary,
+        ),
       ),
     );
   }

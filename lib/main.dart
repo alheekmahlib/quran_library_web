@@ -4,6 +4,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import 'config/app_router.dart';
 import 'constants/app_theme.dart';
+import 'controllers/content_controller.dart';
 import 'controllers/language_controller.dart';
 import 'controllers/navigation_controller.dart';
 import 'controllers/search_controller.dart';
@@ -31,6 +32,7 @@ class QuranLibraryWebsite extends StatelessWidget {
         Get.put(LanguageController());
         Get.put(NavigationController());
         Get.put(AppSearchController());
+        Get.put(ContentController());
       }),
       routeInformationParser: AppRouter.router.routeInformationParser,
       routerDelegate: AppRouter.router.routerDelegate,

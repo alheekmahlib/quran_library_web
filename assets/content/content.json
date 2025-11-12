@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "lastUpdated": "2025-11-06T12:00:00Z",
+  "defaultLanguage": "ar",
+  "languages": ["ar", "en", "bn", "id", "ur", "tr", "ku", "ms", "es"],
+  "groups": [
+    {
+      "id": "getting_started",
+      "title": {"ar": "البدء", "en": "Getting Started"},
+      "order": 1,
+      "sections": ["what_is_quran_library"]
+    }
+  ],
+  "sections": [
+    {
+      "id": "what_is_quran_library",
+      "title": {
+        "ar": "ما هي مكتبة القرآن؟",
+        "en": "What is Quran Library?",
+        "bn": "What is Quran Library?",
+        "id": "What is Quran Library?",
+        "ur": "What is Quran Library?",
+        "tr": "What is Quran Library?",
+        "ku": "What is Quran Library?",
+        "ms": "What is Quran Library?",
+        "es": "What is Quran Library?"
+      },
+      "order": 1,
+      "keywords": ["quran", "library", "intro", "documentation"],
+      "blocks": [
+        {
+          "type": "title",
+          "content": {
+            "ar": "ما هي مكتبة القرآن؟",
+            "en": "What is Quran Library?",
+            "bn": "What is Quran Library?",
+            "id": "What is Quran Library?",
+            "ur": "What is Quran Library?",
+            "tr": "What is Quran Library?",
+            "ku": "What is Quran Library?",
+            "ms": "What is Quran Library?",
+            "es": "What is Quran Library?"
+          }
+        },
+        {
+          "type": "paragraph",
+          "content": {
+            "ar": "مكتبة القرآن هي مكتبة Flutter شاملة ومتقدمة لعرض القرآن الكريم مع دعم البحث والإشارات المرجعية والتفسير وتشغيل الصوت.",
+            "en": "Quran Library is a comprehensive Flutter package to display the Holy Quran with search, bookmarks, tafsir, and audio playback.",
+            "bn": "Quran Library is a comprehensive Flutter package to display the Holy Quran with search, bookmarks, tafsir, and audio playback.",
+            "id": "Quran Library is a comprehensive Flutter package to display the Holy Quran with search, bookmarks, tafsir, and audio playback.",
+            "ur": "Quran Library is a comprehensive Flutter package to display the Holy Quran with search, bookmarks, tafsir, and audio playback.",
+            "tr": "Quran Library is a comprehensive Flutter package to display the Holy Quran with search, bookmarks, tafsir, and audio playback.",
+            "ku": "Quran Library is a comprehensive Flutter package to display the Holy Quran with search, bookmarks, tafsir, and audio playback.",
+            "ms": "Quran Library is a comprehensive Flutter package to display the Holy Quran with search, bookmarks, tafsir, and audio playback.",
+            "es": "Quran Library is a comprehensive Flutter package to display the Holy Quran with search, bookmarks, tafsir, and audio playback."
+          }
+        },
+        {
+          "type": "feature_list",
+          "content": {
+            "ar": "الميزات الرئيسية",
+            "en": "Main Features",
+            "bn": "Main Features",
+            "id": "Main Features",
+            "ur": "Main Features",
+            "tr": "Main Features",
+            "ku": "Main Features",
+            "ms": "Main Features",
+            "es": "Main Features"
+          },
+          "props": {
+            "items": [
+              {"ar": "عرض كامل للمصحف بخطوط جميلة", "en": "Full Quran rendering with beautiful fonts", "bn": "Full Quran rendering with beautiful fonts", "id": "Full Quran rendering with beautiful fonts", "ur": "Full Quran rendering with beautiful fonts", "tr": "Full Quran rendering with beautiful fonts", "ku": "Full Quran rendering with beautiful fonts", "ms": "Full Quran rendering with beautiful fonts", "es": "Full Quran rendering with beautiful fonts"},
+              {"ar": "بحث سريع في الآيات والسور", "en": "Fast search in verses and surahs", "bn": "Fast search in verses and surahs", "id": "Fast search in verses and surahs", "ur": "Fast search in verses and surahs", "tr": "Fast search in verses and surahs", "ku": "Fast search in verses and surahs", "ms": "Fast search in verses and surahs", "es": "Fast search in verses and surahs"},
+              {"ar": "علامات مرجعية وإدارة مرنة", "en": "Flexible bookmarks management", "bn": "Flexible bookmarks management", "id": "Flexible bookmarks management", "ur": "Flexible bookmarks management", "tr": "Flexible bookmarks management", "ku": "Flexible bookmarks management", "ms": "Flexible bookmarks management", "es": "Flexible bookmarks management"},
+              {"ar": "تشغيل صوتي ودعم العمل دون اتصال", "en": "Audio playback with offline support", "bn": "Audio playback with offline support", "id": "Audio playback with offline support", "ur": "Audio playback with offline support", "tr": "Audio playback with offline support", "ku": "Audio playback with offline support", "ms": "Audio playback with offline support", "es": "Audio playback with offline support"}
+            ]
+          }
+        },
+        {
+          "type": "note",
+          "content": {
+            "ar": "يمكن إدارة هذا المحتوى بالكامل من ملف JSON دون الحاجة إلى تعديل الكود.",
+            "en": "This content is fully managed via JSON without editing code.",
+            "bn": "This content is fully managed via JSON without editing code.",
+            "id": "This content is fully managed via JSON without editing code.",
+            "ur": "This content is fully managed via JSON without editing code.",
+            "tr": "This content is fully managed via JSON without editing code.",
+            "ku": "This content is fully managed via JSON without editing code.",
+            "ms": "This content is fully managed via JSON without editing code.",
+            "es": "This content is fully managed via JSON without editing code."
+          }
+        }
+      ]
+    }
+  ]
+}

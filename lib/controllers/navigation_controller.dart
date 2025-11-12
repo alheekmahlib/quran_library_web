@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
 import '../config/app_router.dart';
+import 'language_controller.dart';
 
 class NavigationController extends GetxController {
   static NavigationController get instance => Get.find();
@@ -13,14 +14,21 @@ class NavigationController extends GetxController {
     // Update navigation controller based on current route
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (Get.context != null) {
-        final currentRoute = GoRouterState.of(Get.context!).uri.toString();
-        updateSectionFromUrl(currentRoute);
+        try {
+          final state = GoRouterState.of(Get.context!);
+          final sectionId = state.pathParameters['sectionId'];
+          if (sectionId != null && sectionId.isNotEmpty) {
+            updateSectionFromUrl(sectionId);
+          }
+        } catch (e) {
+          // إذا لم نكن في مسار section، ابقَ على القسم الافتراضي
+        }
       }
     });
   }
 
   // Observable for current section
-  var currentSection = 'what_is_quran_library'.obs;
+  var currentSection = 'about-library'.obs;
   bool _isUpdatingFromUrl = false;
 
   void navigateToSection(String sectionKey, [BuildContext? context]) {
@@ -31,22 +39,25 @@ class NavigationController extends GetxController {
     // Try to get context from parameter or Get.context
     final buildContext = context ?? Get.context;
     if (buildContext != null) {
-      final route = AppRouter.getRouteFromSection(sectionKey);
+      final languageCode = LanguageController.instance.currentLanguage.value;
+      final route = AppRouter.buildSectionRoute(languageCode, sectionKey);
       buildContext.go(route);
     }
   }
 
-  // This method is called when the URL changes
-  void updateSectionFromUrl(String route) {
+  // This method is called when the URL changes (path parameter format)
+  void updateSectionFromUrl(String sectionPath) {
     _isUpdatingFromUrl = true;
-    final section = AppRouter.getSectionFromRoute(route);
-    if (currentSection.value != section) {
-      currentSection.value = section;
+    final sectionId = AppRouter.pathToSectionId(sectionPath);
+    if (currentSection.value != sectionId) {
+      currentSection.value = sectionId;
     }
     _isUpdatingFromUrl = false;
   }
 
   // Get current route path
-  String get currentRoute =>
-      AppRouter.getRouteFromSection(currentSection.value);
+  String get currentRoute {
+    final languageCode = LanguageController.instance.currentLanguage.value;
+    return AppRouter.buildSectionRoute(languageCode, currentSection.value);
+  }
 }

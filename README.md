@@ -1,16 +1,40 @@
-# quran_package_website
+# quran_library_web
 
-A new Flutter project.
+واجهة ويب Flutter.
 
-## Getting Started
+## النشر على GitHub Pages
 
-This project is a starting point for a Flutter application.
+تم إعداد وركفلو GitHub Actions (`.github/workflows/deploy_pages.yml`) لبناء التطبيق ونشره تلقائياً على GitHub Pages عند أي دفع (push) إلى الفرع `main` أو عند التشغيل اليدوي.
 
-A few resources to get you started if this is your first Flutter project:
+### المسار (Base Href)
+يُبنى الموقع باستخدام:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```
+flutter build web --release --base-href /quran_library_web/
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+هذا يضمن عمل الأصول والروابط تحت المسار الفرعي الخاص بالمستودع.
+
+### التفعيل الأول
+1. من إعدادات المستودع في GitHub، ادخل إلى Settings > Pages.
+2. اختر Source: GitHub Actions (إن لم يكن مفعّلاً).
+3. بعد أول تنفيذ ناجح سترى الرابط في نفس الصفحة. الرابط المتوقع:
+	 `https://alheekmahlib.github.io/quran_library_web/`.
+
+### تشغيل البناء يدوياً
+من تبويب Actions اختر "Deploy Flutter Web to GitHub Pages" ثم "Run workflow".
+
+### استكشاف الأخطاء
+- تأكد من نجاح `flutter pub get` في السجلات.
+- إن تغيّر اسم المستودع أو مسار النشر، حدّث قيمة `--base-href` داخل
+	`.github/workflows/deploy_pages.yml`.
+
+## تطوير محلي
+لتشغيل محلياً:
+```
+flutter pub get
+flutter run -d chrome
+```
+
+لمزيد من المعلومات عن Flutter راجع
+[الوثائق الرسمية](https://docs.flutter.dev/).

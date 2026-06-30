@@ -33,9 +33,16 @@ jobs:
       - name: Build web (root base-href for custom domain)
         run: flutter build web --release --base-href "/"
 
+      - name: Create Cloudflare Pages project (if not exists)
+        run: npx wrangler pages project create quran-library-web --production-branch=main || true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy build/web --project-name=quran-library-web
+          wranglerVersion: '3.99.0'
+          command: pages deploy build/web --project-name=quran-library-web --commit-dirty=true
